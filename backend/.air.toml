@@ -1,0 +1,31 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  cmd = "go build -gcflags 'all=-N -l' -o ./tmp/main ." #"/go/bin/dlv debug main.go --listen=:4000 --api-version=2 --log=true --headless=true --accept-multiclient --output ./tmp/main"
+  bin = "/go/bin/dlv exec ./tmp/main  --continue --listen=:4000 --api-version=2 --log=true --headless=true --accept-multiclient" #"./tmp/main"
+  # Укажите все расширения файлов, которые требуется отслеживать
+  include_ext = ["go", "mod", "sum", "tmpl", "html"]
+  # Исключите директории, которые не следует отслеживать
+  exclude_dir = ["tmp", "vendor", "node_modules"]
+  # Установите задержку перед перезапуском после остановки приложения
+  kill_delay = "5s"
+
+[log]
+  # Включите временные метки в логах
+  time = true
+
+[color]
+  main = "yellow"
+  watcher = "cyan"
+  build = "green"
+  runner = "magenta"
+
+[watch]
+  # Отслеживайте все файлы и директории в корне
+  include = ["./*"]
+  exclude = []
+  # Это примеры шаблонов исключения
+  exclude_file = [".DS_Store", ".git/*", "tmp/*", "*.test", "*.md"]
+  # Задержка между проверками файловой системы
+  interval = "100ms"

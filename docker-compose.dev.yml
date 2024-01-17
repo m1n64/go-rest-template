@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: ./backend/
+      dockerfile: Dockerfile
+      target: dev
+    container_name: backend
+    volumes:
+      - ./backend/:/app:cached
+    command: air
+    ports:
+      - "4000:4000"
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - "1000:8080"
