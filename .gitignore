@@ -3,3 +3,4 @@ redis/
 db/
 grafana/
 .env
+!docker/grafana

@@ -7,6 +7,8 @@ Database: Postgresql, Redis
 
 Logs, metrics: Prometheus, Grafana
 
+Server, proxy: nginx
+
 *****
 
 Dev-mode:
